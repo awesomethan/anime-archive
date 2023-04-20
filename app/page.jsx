@@ -1,0 +1,144 @@
+"use client";
+
+import React, { useState } from "react";
+import Anime from "./Anime";
+
+export default function Home() {
+  const [search, setSearch] = useState("");
+  const [animeList, setAnimeList] = useState();
+  const recommendedAnime = [
+    {
+      title: "Kimetsu o Yaiba",
+      imageURL: "https://cdn.myanimelist.net/images/anime/1286/99889l.jpg",
+      id: 38000,
+    },
+    {
+      title: "Death Note",
+      imageURL: "https://cdn.myanimelist.net/images/anime/9/9453l.jpg",
+      id: 1535,
+    },
+    {
+      title: "Shingeki no Kyojin",
+      imageURL: "https://cdn.myanimelist.net/images/anime/10/47347l.jpg",
+      id: 16498,
+    },
+    {
+      title: "Blue Lock",
+      imageURL: "https://cdn.myanimelist.net/images/anime/1258/126929l.jpg",
+      id: 49596,
+    },
+    {
+      title: "Koe no Katachi",
+      imageURL: "https://cdn.myanimelist.net/images/anime/1122/96435l.jpg",
+      id: 28851,
+    },
+    {
+      title: "Tenki no Ko",
+      imageURL: "https://cdn.myanimelist.net/images/anime/1880/101146l.jpg",
+      id: 38826,
+    },
+    {
+      title: "Lycoris Recoil",
+      imageURL: "https://cdn.myanimelist.net/images/anime/1392/124401l.jpg",
+      id: 50709,
+    },
+    {
+      title: "Pokemon XY",
+      imageURL: "https://cdn.myanimelist.net/images/anime/12/54549l.jpg",
+      id: 19291,
+    },
+    {
+      title: "Spy x Family",
+      imageURL: "https://cdn.myanimelist.net/images/anime/1441/122795l.jpg",
+      id: 50265,
+    },
+    {
+      title: "Jujutsu Kaisen",
+      imageURL: "https://cdn.myanimelist.net/images/anime/1171/109222l.jpg",
+      id: 40748,
+    },
+    {
+      title: "Tomodachi Game",
+      imageURL: "https://cdn.myanimelist.net/images/anime/1247/121345l.jpg",
+      id: 50273,
+    },
+    {
+      title: "Charlotte",
+      imageURL: "https://cdn.myanimelist.net/images/anime/12/74683l.jpg",
+      id: 28999,
+    },
+    {
+      title: "Yakusoku no Neverland",
+      imageURL: "https://cdn.myanimelist.net/images/anime/1830/118780l.jpg",
+      id: 37779,
+    },
+    {
+      title: "Kami no Tou",
+      imageURL: "https://cdn.myanimelist.net/images/anime/1702/106229l.jpg",
+      id: 40221,
+    },
+    {
+      title: "Horimiya",
+      imageURL: "https://cdn.myanimelist.net/images/anime/1695/111486l.jpg",
+      id: 42897,
+    },
+    {
+      title: "Bocchi the Rock",
+      imageURL: "https://cdn.myanimelist.net/images/anime/1448/127956l.jpg",
+      id: 47917,
+    },
+  ];
+
+  async function getAnimeList() {
+    const data = await fetch(
+      `https://api.jikan.moe/v4/anime?q=${search}&limit=20`
+    );
+    const res = await data.json();
+    setAnimeList(res.data);
+  }
+
+  function showSearchResults() {
+    if (animeList) {
+      return <p className="text-3xl font-bold pt-10 pb-5">Search Results</p>;
+    }
+  }
+
+  return (
+    <main>
+      <div className="flex justify-center pb-10">
+        <input
+          type="search"
+          placeholder="Search for an anime"
+          className="border-2 border-gray-500 rounded-lg w-3/4 px-3"
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <input
+          type="button"
+          value="Search!"
+          className="text-2xl w-1/4 border-2 border-gray-500 rounded-lg py-5 mx-5 font-semibold hover:cursor-pointer hover:bg-white hover:text-black transition duration-300"
+          onClick={getAnimeList}
+        />
+      </div>
+      {showSearchResults()}
+      <div className="grid grid-cols-4 gap-16">
+        {animeList?.map((anime) => (
+          <Anime
+            title={anime.title}
+            imageURL={anime.images.jpg.large_image_url}
+            id={anime.mal_id}
+          ></Anime>
+        ))}
+      </div>
+      <p className="text-3xl font-bold pt-10 pb-5">Recommended Anime</p>
+      <div className="grid grid-cols-4 gap-16">
+        {recommendedAnime.map((anime) => (
+          <Anime
+            title={anime.title}
+            imageURL={anime.imageURL}
+            id={anime.id}
+          ></Anime>
+        ))}
+      </div>
+    </main>
+  );
+}
