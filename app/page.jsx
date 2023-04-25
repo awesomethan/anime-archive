@@ -8,7 +8,7 @@ export default function Home() {
   const [animeList, setAnimeList] = useState();
   const recommendedAnime = [
     {
-      title: "Kimetsu o Yaiba",
+      title: "Kimetsu no Yaiba",
       imageURL: "https://cdn.myanimelist.net/images/anime/1286/99889l.jpg",
       id: 38000,
     },
