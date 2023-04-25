@@ -22,10 +22,16 @@ export default function RootLayout({ children }) {
             width={70}
             height={70}
           ></img>
-          <a className="text-4xl font-bold" href="./">
+          <a
+            className="text-4xl font-bold hover:text-sky-300 duration-300"
+            href="./"
+          >
             Ethan's Anime Archive
           </a>
-          <a className="text-4xl font-bold" href="/about">
+          <a
+            className="text-4xl font-bold hover:text-sky-300 duration-300"
+            href="/about"
+          >
             About
           </a>
         </nav>
