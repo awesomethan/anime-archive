@@ -21,7 +21,7 @@ export default async function AnimeDetails({ params }) {
     <div className="flex w-screen">
       <div className="flex w-2/5 flex-col">
         <h1 className="pb-4 text-center text-2xl font-bold">
-          {res.data.title}
+          {res.data.title ? res.data.title : "title unavailable"}
         </h1>
         <div className="flex justify-center">
           <img
