@@ -31,7 +31,7 @@ export default function AnimeDetails({ params }) {
     return <p>Loading...</p>;
   }
 
-  if (!animeData) {
+  if (!animeData || !animeData.title) {
     // Handle other error cases
     return <p>Error loading anime data</p>;
   }
