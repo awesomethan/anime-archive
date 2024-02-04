@@ -90,11 +90,25 @@ export default function Home() {
   ];
 
   async function getAnimeList() {
-    const data = await fetch(
-      `https://api.jikan.moe/v4/anime?q=${search}&limit=20`
-    );
-    const res = await data.json();
-    setAnimeList(res.data);
+    try {
+      const data = await fetch(
+        `https://api.jikan.moe/v4/anime?q=${search}&limit=20`
+      );
+      const res = await data.json();
+
+      if (res?.data) {
+        setAnimeList(res.data);
+      } else {
+        console.error(
+          "Anime data is undefined or has an unexpected structure:",
+          res
+        );
+        // Handle error or provide user feedback
+      }
+    } catch (error) {
+      console.error("Error fetching anime data:", error);
+      // Handle error, show a message, or redirect to an error page
+    }
   }
 
   function showSearchResults() {
