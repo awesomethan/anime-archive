@@ -2,7 +2,9 @@ export default async function AnimeDetails({ params }) {
   const { anime } = params;
   const data = await fetch(`https://api.jikan.moe/v4/anime/${anime}`);
   const res = await data.json();
-
+  if (!res) {
+    return <p>Loading...</p>;
+  }
   function getProperty(color, property, value) {
     return (
       <p>
@@ -16,8 +18,8 @@ export default async function AnimeDetails({ params }) {
 
   return (
     <div className="flex w-screen">
-      <div className="w-2/5 flex flex-col">
-        <h1 className="text-2xl text-center font-bold pb-4">
+      <div className="flex w-2/5 flex-col">
+        <h1 className="pb-4 text-center text-2xl font-bold">
           {res.data.title}
         </h1>
         <div className="flex justify-center">
@@ -30,7 +32,7 @@ export default async function AnimeDetails({ params }) {
         </div>
       </div>
       <div className="w-3/5 pt-10">
-        <p className="text-justify pr-48">
+        <p className="pr-48 text-justify">
           <span className="text-rose-600 underline underline-offset-auto">
             Summary:
           </span>

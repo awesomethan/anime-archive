@@ -99,7 +99,7 @@ export default function Home() {
 
   function showSearchResults() {
     if (animeList) {
-      return <p className="text-3xl font-bold pt-10 pb-5">Search Results</p>;
+      return <p className="pt-10 pb-5 text-3xl font-bold">Search Results</p>;
     }
   }
 
@@ -109,13 +109,13 @@ export default function Home() {
         <input
           type="search"
           placeholder="Search for an anime"
-          className="border-2 border-gray-500 rounded-lg w-3/4 px-3"
+          className="w-3/4 rounded-lg border-2 border-gray-500 px-3"
           onChange={(e) => setSearch(e.target.value)}
         />
         <input
           type="button"
           value="Search!"
-          className="text-2xl w-1/4 border-2 border-gray-500 rounded-lg py-5 mx-5 font-semibold hover:cursor-pointer hover:bg-white hover:text-black transition duration-300"
+          className="mx-5 w-1/4 rounded-lg border-2 border-gray-500 py-5 text-2xl font-semibold transition duration-300 hover:cursor-pointer hover:bg-white hover:text-black"
           onClick={getAnimeList}
         />
       </div>
@@ -129,7 +129,7 @@ export default function Home() {
           ></Anime>
         ))}
       </div>
-      <p className="text-3xl font-bold pt-10 pb-5">Recommended Anime</p>
+      <p className="pt-10 pb-5 text-3xl font-bold">Recommended Anime</p>
       <div className="grid grid-cols-4 gap-16">
         {recommendedAnime.map((anime) => (
           <Anime
