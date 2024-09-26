@@ -23,13 +23,13 @@ export default function RootLayout({ children }) {
             height={70}
           ></img>
           <a
-            className="text-4xl font-bold hover:text-sky-300 duration-300"
+            className="text-4xl font-bold duration-300 hover:text-sky-300"
             href="./"
           >
             Ethan's Anime Archive
           </a>
           <a
-            className="text-4xl font-bold hover:text-sky-300 duration-300"
+            className="text-4xl font-bold duration-300 hover:text-sky-300"
             href="/about"
           >
             About

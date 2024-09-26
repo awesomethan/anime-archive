@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <div className="h-96 flex items-center px-10 text-lg leading-8">
+    <div className="h-auto flex items-center px-10 text-lg leading-8">
       <div className="w-2/3 px-5">
         <p className="py-5">
           Hey! Welcome to my anime site! Here's how you can use it:
@@ -23,7 +23,7 @@ export default function About() {
       </div>
       <img
         src="/chisato.gif"
-        className="w-1/3 h-3/5"
+        className="w-1/3 h-auto object-contain aspect-[3/4]"
         alt="gif cannot be displayed"
       />
     </div>

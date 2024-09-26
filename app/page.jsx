@@ -73,11 +73,6 @@ export default function Home() {
       id: 37779,
     },
     {
-      title: "Kami no Tou",
-      imageURL: "https://cdn.myanimelist.net/images/anime/1702/106229l.jpg",
-      id: 40221,
-    },
-    {
       title: "Horimiya",
       imageURL: "https://cdn.myanimelist.net/images/anime/1695/111486l.jpg",
       id: 42897,
@@ -94,12 +89,25 @@ export default function Home() {
       `https://api.jikan.moe/v4/anime?q=${search}&limit=20`
     );
     const res = await data.json();
-    setAnimeList(res.data);
+    const filteredAnime = res.data.filter(
+      (anime) =>
+        !anime.rating?.toLowerCase().includes("hentai") &&
+        !anime.rating?.toLowerCase().includes("nudity")
+    );
+
+    setAnimeList(filteredAnime);
   }
 
   function showSearchResults() {
     if (animeList) {
-      return <p className="pt-10 pb-5 text-3xl font-bold">Search Results</p>;
+      if (animeList.length > 0)
+        return <p className="pt-10 pb-5 text-3xl font-bold">Search Results</p>;
+      else
+        return (
+          <p className="pt-10 pb-5 text-xl font-bold">
+            No anime found. Please enter a valid anime name.
+          </p>
+        );
     }
   }
 
@@ -111,6 +119,11 @@ export default function Home() {
           placeholder="Search for an anime"
           className="w-3/4 rounded-lg border-2 border-gray-500 px-3"
           onChange={(e) => setSearch(e.target.value)}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              getAnimeList();
+            }
+          }}
         />
         <input
           type="button"
@@ -120,17 +133,17 @@ export default function Home() {
         />
       </div>
       {showSearchResults()}
-      <div className="grid grid-cols-4 gap-16">
+      <div className="grid grid-cols-5 gap-16">
         {animeList?.map((anime) => (
           <Anime
             title={anime.title}
-            imageURL={anime.images.jpg.large_image_url}
+            imageURL={anime.images.jpg.image_url}
             id={anime.mal_id}
           ></Anime>
         ))}
       </div>
       <p className="pt-10 pb-5 text-3xl font-bold">Recommended Anime</p>
-      <div className="grid grid-cols-4 gap-16">
+      <div className="grid grid-cols-5 gap-16">
         {recommendedAnime.map((anime) => (
           <Anime
             title={anime.title}
