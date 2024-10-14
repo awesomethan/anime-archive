@@ -1,3 +1,6 @@
+import { auth } from "@clerk/nextjs/server";
+import AnimeClient from "./AnimeClient";
+
 export default async function AnimeDetails({ params }) {
   const { anime } = params;
 
@@ -26,64 +29,8 @@ export default async function AnimeDetails({ params }) {
     );
   }
 
-  // Utility function to display properties
-  function getProperty(color, property, value) {
-    return (
-      <p>
-        <span className={`${color} underline underline-offset-auto`}>
-          {property}:
-        </span>
-        {" " + (value || "N/A")}
-      </p>
-    );
-  }
+  // Get the current user's ID (you can pass this to the client component)
+  const { userId } = auth();
 
-  return (
-    <div className="flex w-screen p-10">
-      {/* Left Section: Title and Image */}
-      <div className="flex w-2/5 flex-col">
-        <h1 className="pb-4 text-center text-2xl font-bold">
-          {res.data.title || "Title not available"}
-        </h1>
-        <div className="flex justify-center">
-          <img
-            src={res.data.images?.jpg?.large_image_url || "/placeholder.jpg"}
-            alt={res.data.title || "Anime image"}
-            width={400}
-            height={400}
-            className="rounded-lg shadow-lg"
-          />
-        </div>
-      </div>
-
-      {/* Right Section: Anime Details */}
-      <div className="w-3/5 pl-10 pt-10 text-white">
-        <p className="pr-48 text-justify pb-4">
-          <span className="text-cyan-400 underline underline-offset-auto">
-            Summary:
-          </span>
-          {" " + (res.data.synopsis || "Synopsis not available")}
-        </p>
-
-        <p className="pb-4">
-          <span className="text-lime-400 underline underline-offset-auto">
-            Genre(s):
-          </span>
-          {res.data.genres && res.data.genres.length > 0
-            ? res.data.genres.map((genre) => (
-                <span key={genre.mal_id}>{" " + genre.name}</span>
-              ))
-            : " Genre data not available"}
-        </p>
-
-        {getProperty("text-yellow-400", "Episode(s)", res.data.episodes)}
-        {getProperty("text-orange-400", "Duration", res.data.duration)}
-        {getProperty("text-pink-400", "Status", res.data.status)}
-        {getProperty("text-blue-400", "Score", res.data.score)}
-        {getProperty("text-gray-400", "Rank", res.data.rank)}
-        {getProperty("text-purple-400", "Source", res.data.source)}
-        {getProperty("text-fuchsia-400", "Rating", res.data.rating)}
-      </div>
-    </div>
-  );
+  return <AnimeClient anime={res.data} userId={userId} />;
 }

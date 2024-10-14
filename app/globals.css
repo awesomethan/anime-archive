@@ -109,6 +109,10 @@ li::before {
   color: white;
 }
 
+.cl-internal-u72jx4 {
+  color: white;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
