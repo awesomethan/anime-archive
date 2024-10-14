@@ -5,9 +5,10 @@ import { useState } from "react";
 export default function AnimeClient({ anime, userId }) {
   const [isAdding, setIsAdding] = useState(false);
   const [addSuccess, setAddSuccess] = useState(false);
+  const [isRemoving, setIsRemoving] = useState(false);
+  const [removeSuccess, setRemoveSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  // Handle adding the anime to the user's list
   const handleAddToList = async () => {
     setIsAdding(true);
     try {
@@ -25,6 +26,7 @@ export default function AnimeClient({ anime, userId }) {
 
       if (response.ok) {
         setAddSuccess(true);
+        setRemoveSuccess(false);
       } else {
         if (response.status === 409) {
           // Handle anime already in list
@@ -34,10 +36,41 @@ export default function AnimeClient({ anime, userId }) {
         setAddSuccess(false);
       }
     } catch (error) {
-      console.error("Failed to add anime to list:", error);
+      setErrorMsg("Failed to add anime to list: " + error);
       setAddSuccess(false);
     } finally {
       setIsAdding(false);
+    }
+  };
+
+  const handleRemoveFromList = async () => {
+    setIsRemoving(true);
+    try {
+      const response = await fetch("/api/removeAnime", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          animeId: anime.mal_id,
+          userId,
+        }),
+      });
+
+      if (response.ok) {
+        setRemoveSuccess(true);
+        setAddSuccess(false); // Reset add success
+      } else {
+        if (response.status === 404) {
+          const data = await response.json();
+          setErrorMsg(data.message);
+        }
+        setRemoveSuccess(false);
+      }
+    } catch (error) {
+      setErrorMsg("Failed to remove anime from list: " + error);
+    } finally {
+      setIsRemoving(false);
     }
   };
 
@@ -98,21 +131,38 @@ export default function AnimeClient({ anime, userId }) {
         {getProperty("text-purple-400", "Source", anime.source)}
         {getProperty("text-fuchsia-400", "Rating", anime.rating)}
 
-        <button
-          onClick={handleAddToList}
-          className="mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          disabled={isAdding}
-        >
-          {isAdding ? "Adding..." : "Add to My List"}
-        </button>
-        {addSuccess && (
-          <p className="text-green-500 mt-2">
-            Successfully added to your list!
-          </p>
-        )}
-        {!addSuccess && !isAdding && (
-          <p className="text-red-500 mt-2">{errorMsg}</p>
-        )}
+        <div className="flex justify-start space-x-4 mt-5">
+          <button
+            onClick={handleAddToList}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            disabled={isAdding}
+          >
+            {isAdding ? "Adding..." : "Add to My List"}
+          </button>
+
+          <button
+            onClick={handleRemoveFromList}
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            disabled={isRemoving}
+          >
+            {isRemoving ? "Removing..." : "Remove from My List"}
+          </button>
+        </div>
+
+        {/* Single message for success or error */}
+        <div className="mt-4">
+          {(addSuccess || removeSuccess) && (
+            <p className="text-green-500">
+              {addSuccess
+                ? "Successfully added to your list!"
+                : "Successfully removed from your list!"}
+            </p>
+          )}
+
+          {!addSuccess && !removeSuccess && errorMsg && (
+            <p className="text-red-500">{errorMsg}</p>
+          )}
+        </div>
       </div>
     </div>
   );
