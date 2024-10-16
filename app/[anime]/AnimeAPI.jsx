@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function AnimeAPI(anime, userId) {
+export default function AnimeAPI({ anime, userId }) {
   const [isAdding, setIsAdding] = useState(false);
   const [addSuccess, setAddSuccess] = useState(false);
   const [isRemoving, setIsRemoving] = useState(false);
@@ -20,7 +20,7 @@ export default function AnimeAPI(anime, userId) {
         body: JSON.stringify({
           animeId: anime.mal_id,
           animeName: anime.title,
-          userId,
+          userId: userId,
         }),
       });
 

@@ -60,8 +60,7 @@ export default function AnimeClient({ anime, userId }) {
           {getProperty("text-purple-400", "Source", anime.source)}
           {getProperty("text-fuchsia-400", "Rating", anime.rating)}
         </div>
-
-        <AnimeAPI anime={anime} userId={userId} />
+        {anime && userId && <AnimeAPI anime={anime} userId={userId} />}
       </div>
     </div>
   );
