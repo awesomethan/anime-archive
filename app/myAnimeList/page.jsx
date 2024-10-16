@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import MyAnimeListClient from "./MyAnimeListClient";
 
-export default async function MyList() {
+export default async function myAnimeList() {
   const { userId } = auth();
 
   // Pass data to the client component
