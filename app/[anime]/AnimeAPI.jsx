@@ -12,7 +12,7 @@ export default function AnimeAPI({ anime, userId }) {
   const handleAddToList = async () => {
     setIsAdding(true);
     try {
-      const response = await fetch("/api/addAnime/", {
+      const response = await fetch("/api/addAnime", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
