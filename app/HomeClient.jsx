@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Anime from "./Anime";
 
-export default function HomeClient({ welcomeSuffix, userId }) {
+export default function HomeClient({ welcomeSuffix }) {
   const [search, setSearch] = useState("");
   const [animeList, setAnimeList] = useState();
-  const [myAnimeList, setMyAnimeList] = useState([]);
 
   const recommendedAnime = [
     {
@@ -115,26 +114,31 @@ export default function HomeClient({ welcomeSuffix, userId }) {
 
   return (
     <main>
-      <h1>Welcome{welcomeSuffix}!👋</h1>
-      <div className="flex justify-center pb-10">
-        <input
-          type="search"
-          placeholder="Search for an anime"
-          className="w-3/4 rounded-lg border-2 border-gray-500 px-3"
-          onChange={(e) => setSearch(e.target.value)}
-          onKeyPress={(e) => {
-            if (e.key === "Enter") {
-              getAnimeList();
-            }
-          }}
-        />
-        <input
-          type="button"
-          value="Search!"
-          className="mx-5 w-1/4 rounded-lg border-2 border-gray-500 py-5 text-2xl font-semibold transition duration-300 hover:cursor-pointer hover:bg-white hover:text-black"
-          onClick={getAnimeList}
-        />
+      <h1 className="flex justify-center py-10 text-3xl font-bold">
+        Welcome{welcomeSuffix}!👋
+      </h1>
+      <div className="flex justify-center w-full">
+        <div className="flex w-2/3">
+          <input
+            type="search"
+            placeholder="Search for an anime"
+            className="w-3/4 rounded-lg border-2 border-gray-500 px-3"
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                getAnimeList();
+              }
+            }}
+          />
+          <input
+            type="button"
+            value="Search!"
+            className="mx-5 w-1/4 rounded-lg border-2 border-gray-500 py-5 text-2xl font-semibold transition duration-300 hover:cursor-pointer hover:bg-white hover:text-black"
+            onClick={getAnimeList}
+          />
+        </div>
       </div>
+
       {showSearchResults()}
       <div className="grid grid-cols-5 gap-16">
         {animeList?.map((anime) => (

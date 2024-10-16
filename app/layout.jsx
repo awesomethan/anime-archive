@@ -7,7 +7,6 @@ import {
 } from "@clerk/nextjs";
 import "./globals.css";
 import { Kanit } from "next/font/google";
-import { color } from "echarts";
 
 const kanit = Kanit({
   weight: ["400", "700"],
@@ -41,15 +40,15 @@ export default function RootLayout({ children }) {
             </a>
             <a
               className="text-4xl font-bold duration-300 hover:text-sky-300"
-              href="/about"
-            >
-              About
-            </a>
-            <a
-              className="text-4xl font-bold duration-300 hover:text-sky-300"
               href="/myAnimeList"
             >
               My List
+            </a>
+            <a
+              className="text-4xl font-bold duration-300 hover:text-sky-300"
+              href="/about"
+            >
+              About
             </a>
             <a>
               <SignedOut>
