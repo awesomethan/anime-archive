@@ -11,8 +11,6 @@ const adapter = new PrismaLibSQL(libsql);
 const prisma = new PrismaClient({ adapter });
 
 export default async function handler(req, res) {
-  console.log("Database URL:", process.env.TURSO_DATABASE_URL);
-  console.log("Auth Token:", process.env.TURSO_AUTH_TOKEN);
   // Set CORS headers
   res.setHeader("Access-Control-Allow-Credentials", true);
   res.setHeader("Access-Control-Allow-Origin", "*"); // Update to specific origin if needed

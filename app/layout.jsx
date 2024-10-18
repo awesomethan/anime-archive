@@ -7,6 +7,7 @@ import {
 } from "@clerk/nextjs";
 import "./globals.css";
 import { Kanit } from "next/font/google";
+import CustomHead from "./customHead";
 
 const kanit = Kanit({
   weight: ["400", "700"],
@@ -23,7 +24,7 @@ export default function RootLayout({ children }) {
         <head /> will contain the components returned by the nearest parent
         head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
-        <head />
+        <CustomHead />
         <body className={`${kanit.className} mx-20 my-8`}>
           <nav className="flex justify-around pt-4 pb-10">
             <img
