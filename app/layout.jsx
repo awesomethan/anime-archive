@@ -7,7 +7,7 @@ import {
 } from "@clerk/nextjs";
 import "./globals.css";
 import { Kanit } from "next/font/google";
-import CustomHead from "./customHead";
+import CustomHead from "./CustomHead";
 
 const kanit = Kanit({
   weight: ["400", "700"],
