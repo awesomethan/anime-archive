@@ -4,5 +4,5 @@ CREATE TABLE "Anime" (
     "userId" TEXT NOT NULL,
     "name" TEXT NOT NULL,
 
-    CONSTRAINT "Anime_pkey" PRIMARY KEY ("id","userId")
+    PRIMARY KEY ("id", "userId")
 );
