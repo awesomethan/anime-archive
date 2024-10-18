@@ -7,12 +7,19 @@ import {
 } from "@clerk/nextjs";
 import "./globals.css";
 import { Kanit } from "next/font/google";
-import CustomHead from "./CustomHead";
 
 const kanit = Kanit({
   weight: ["400", "700"],
   subsets: ["latin"],
 });
+
+export const metadata = {
+  title: {
+    absolute: "",
+    default: "Ethan's Anime Archive",
+    template: "",
+  },
+};
 
 export default function RootLayout({ children }) {
   return (
@@ -24,7 +31,6 @@ export default function RootLayout({ children }) {
         <head /> will contain the components returned by the nearest parent
         head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
-        <CustomHead />
         <body className={`${kanit.className} mx-20 my-8`}>
           <nav className="flex justify-around pt-4 pb-10">
             <img
