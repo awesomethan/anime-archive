@@ -28,11 +28,8 @@ export default function AnimeAPI({ anime, userId }) {
         setAddSuccess(true);
         setRemoveSuccess(false);
       } else {
-        if (response.status === 409) {
-          // Handle anime already in list
-          const data = await response.json();
-          setErrorMsg(data.message);
-        }
+        const data = await response.json();
+        setErrorMsg(data.message);
         setAddSuccess(false);
       }
     } catch (error) {
@@ -61,10 +58,8 @@ export default function AnimeAPI({ anime, userId }) {
         setRemoveSuccess(true);
         setAddSuccess(false); // Reset add success
       } else {
-        if (response.status === 404) {
-          const data = await response.json();
-          setErrorMsg(data.message);
-        }
+        const data = await response.json();
+        setErrorMsg(data.message);
         setRemoveSuccess(false);
       }
     } catch (error) {

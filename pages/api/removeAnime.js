@@ -44,6 +44,17 @@ export default async function handler(req, res) {
     return res.status(200).json({ message: "Anime removed from list" });
   } catch (error) {
     console.error(error);
+    if (
+      error.code === "P1001" ||
+      error.message.includes("502") ||
+      error.message.includes("504")
+    ) {
+      return res
+        .status(503)
+        .json({
+          message: "Server is temporarily down, please try again later",
+        });
+    }
     return res
       .status(500)
       .json({ message: "Failed to remove anime from list" });

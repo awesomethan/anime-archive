@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ClerkProvider,
   SignInButton,
@@ -7,19 +9,74 @@ import {
 } from "@clerk/nextjs";
 import "./globals.css";
 import { Kanit } from "next/font/google";
+import { useEffect, useState } from "react";
+import { useAuth } from "@clerk/nextjs";
 
 const kanit = Kanit({
   weight: ["400", "700"],
   subsets: ["latin"],
 });
 
-export const metadata = {
-  title: {
-    absolute: "",
-    default: "Ethan's Anime Archive",
-    template: "",
-  },
-};
+// Child component inside ClerkProvider where we can use Clerk hooks
+function AppContent({ children }) {
+  const [clerkLoaded, setClerkLoaded] = useState(false);
+  const { isLoaded } = useAuth();
+
+  useEffect(() => {
+    if (isLoaded) {
+      setClerkLoaded(true);
+    }
+  }, [isLoaded]);
+
+  // Show "Loading..."" until Clerk is fully loaded
+  if (!clerkLoaded) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  // Render the full page content once Clerk is loaded
+  return (
+    <>
+      <nav className="flex justify-around px-6 pt-10 h-12/100 w-screen">
+        <img
+          src="logo.png"
+          alt="logo cannot be displayed"
+          className="w-16 h-auto sm:w-20 md:w-24 lg:w-28 xl:w-32"
+        />
+        <a
+          className="text-4xl font-bold duration-300 hover:text-sky-300"
+          href="./"
+        >
+          Ethan's Anime Archive
+        </a>
+        <a
+          className="text-4xl font-bold duration-300 hover:text-sky-300"
+          href="/myAnimeList"
+        >
+          My List
+        </a>
+        <a
+          className="text-4xl font-bold duration-300 hover:text-sky-300"
+          href="/about"
+        >
+          About
+        </a>
+        <div>
+          <SignedOut>
+            <SignInButton className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg" />
+          </SignedOut>
+          <SignedIn>
+            <UserButton showName />
+          </SignedIn>
+        </div>
+      </nav>
+      {children}
+    </>
+  );
+}
 
 export default function RootLayout({ children }) {
   return (
@@ -27,46 +84,8 @@ export default function RootLayout({ children }) {
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
     >
       <html lang="en">
-        {/*
-        <head /> will contain the components returned by the nearest parent
-        head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-        <body className={`${kanit.className} mx-20 my-8`}>
-          <nav className="flex justify-around pt-4 pb-10">
-            <img
-              src="logo.png"
-              alt="logo cannot be displayed"
-              width={70}
-              height={70}
-            ></img>
-            <a
-              className="text-4xl font-bold duration-300 hover:text-sky-300"
-              href="./"
-            >
-              Ethan's Anime Archive
-            </a>
-            <a
-              className="text-4xl font-bold duration-300 hover:text-sky-300"
-              href="/myAnimeList"
-            >
-              My List
-            </a>
-            <a
-              className="text-4xl font-bold duration-300 hover:text-sky-300"
-              href="/about"
-            >
-              About
-            </a>
-            <a>
-              <SignedOut>
-                <SignInButton />
-              </SignedOut>
-              <SignedIn>
-                <UserButton showName />
-              </SignedIn>
-            </a>
-          </nav>
-          {children}
+        <body className={`${kanit.className} h-screen w-screen`}>
+          <AppContent>{children}</AppContent>
         </body>
       </html>
     </ClerkProvider>

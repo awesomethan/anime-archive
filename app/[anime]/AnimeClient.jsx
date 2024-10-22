@@ -1,8 +1,18 @@
 "use client"; // Mark this as a Client Component
 
+import { useState, useEffect } from "react";
 import AnimeAPI from "./AnimeAPI";
 
 export default function AnimeClient({ anime, userId }) {
+  const [isImageLoading, setIsImageLoading] = useState(true);
+  const imageURL = anime.images?.jpg?.large_image_url;
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = imageURL;
+    img.onload = () => setIsImageLoading(false);
+  }, [imageURL]);
+
   function getProperty(color, property, value) {
     return (
       <p>
@@ -15,26 +25,35 @@ export default function AnimeClient({ anime, userId }) {
   }
 
   return (
-    <div className="flex w-screen p-10">
+    <div className="flex w-screen pt-20">
       {/* Left Section: Title and Image */}
-      <div className="flex w-2/5 flex-col">
+      <div className="flex w-2/5 flex-col justify-center">
         <h1 className="pb-4 text-center text-2xl font-bold">
           {anime.title || "Title not available"}
         </h1>
         <div className="flex justify-center">
-          <img
-            src={anime.images?.jpg?.large_image_url || "/placeholder.jpg"}
-            alt={anime.title || "Anime image"}
-            width={400}
-            height={400}
-            className="rounded-lg shadow-lg"
-          />
+          <div className="relative w-1/2 aspect-w-14 aspect-h-9">
+            {isImageLoading && (
+              <img
+                src="/loading-spinner.gif" // Your loading spinner or placeholder image
+                alt="Loading"
+                className="absolute inset-0 rounded-lg shadow-lg object-cover"
+              />
+            )}
+            {!isImageLoading && (
+              <img
+                src={imageURL}
+                alt={anime.title || "Anime image"}
+                className="absolute inset-0 rounded-lg shadow-lg transition-opacity duration-500"
+              />
+            )}
+          </div>
         </div>
       </div>
-      <div className="flex w-3/5 flex-col">
+      <div className="flex w-3/5 flex-col justify-center h-full">
         {/* Right Section: Anime Details */}
-        <div className="pr-10 pt-10 text-white">
-          <p className="pr-48 text-justify pb-4">
+        <div className="text-white">
+          <p className="pr-32 text-justify pb-4">
             <span className="text-cyan-400 underline underline-offset-auto">
               Summary:
             </span>

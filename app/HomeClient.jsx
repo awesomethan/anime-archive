@@ -102,10 +102,10 @@ export default function HomeClient({ welcomeSuffix }) {
   function showSearchResults() {
     if (animeList) {
       if (animeList.length > 0)
-        return <p className="pt-10 pb-5 text-3xl font-bold">Search Results</p>;
+        return <p className="pb-5 text-3xl font-bold">Search Results</p>;
       else
         return (
-          <p className="pt-10 pb-5 text-xl font-bold">
+          <p className="pb-10 text-xl font-bold">
             No anime found. Please enter a valid anime name.
           </p>
         );
@@ -113,7 +113,7 @@ export default function HomeClient({ welcomeSuffix }) {
   }
 
   return (
-    <main>
+    <main className="w-screen">
       <h1 className="flex justify-center py-10 text-3xl font-bold">
         Welcome{welcomeSuffix}!👋
       </h1>
@@ -139,28 +139,30 @@ export default function HomeClient({ welcomeSuffix }) {
         </div>
       </div>
 
-      {showSearchResults()}
-      <div className="grid grid-cols-5 gap-16">
-        {animeList?.map((anime) => (
-          <Anime
-            key={anime.mal_id}
-            title={anime.title}
-            imageURL={anime.images.jpg.image_url}
-            id={anime.mal_id}
-          ></Anime>
-        ))}
-      </div>
+      <div className="p-10">
+        {showSearchResults()}
+        <div className="grid grid-cols-5 gap-16 pb-10">
+          {animeList?.map((anime) => (
+            <Anime
+              key={anime.mal_id}
+              title={anime.title}
+              imageURL={anime.images.jpg.image_url}
+              id={anime.mal_id}
+            ></Anime>
+          ))}
+        </div>
 
-      <p className="pt-10 pb-5 text-3xl font-bold">Recommended Anime</p>
-      <div className="grid grid-cols-5 gap-16">
-        {recommendedAnime.map((anime) => (
-          <Anime
-            key={anime.id}
-            title={anime.title}
-            imageURL={anime.imageURL}
-            id={anime.id}
-          ></Anime>
-        ))}
+        <p className="pb-5 text-3xl font-bold">Recommended Anime</p>
+        <div className="grid grid-cols-5 gap-16">
+          {recommendedAnime.map((anime) => (
+            <Anime
+              key={anime.id}
+              title={anime.title}
+              imageURL={anime.imageURL}
+              id={anime.id}
+            ></Anime>
+          ))}
+        </div>
       </div>
     </main>
   );

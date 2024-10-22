@@ -11,9 +11,10 @@ module.exports = {
   theme: {
     extend: {
       height: {
+        "12/100": "12%",
         112: "28rem",
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/aspect-ratio")],
 };
