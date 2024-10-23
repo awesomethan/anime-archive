@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <div className="pt-40 flex justify-around px-4 text-lg leading-8">
+    <div className="pt-32 flex justify-around px-4 text-lg leading-8">
       <div className="w-1/2">
         <p className="py-5">
           Hey! Welcome to my anime site! Here's how you can use it:

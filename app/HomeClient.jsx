@@ -5,7 +5,9 @@ import Anime from "./Anime";
 
 export default function HomeClient({ welcomeSuffix }) {
   const [search, setSearch] = useState("");
-  const [animeList, setAnimeList] = useState();
+  const [animeList, setAnimeList] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const recommendedAnime = [
     {
@@ -86,6 +88,15 @@ export default function HomeClient({ welcomeSuffix }) {
   ];
 
   async function getAnimeList() {
+    if (!search.trim()) {
+      setAnimeList([]);
+      setErrorMsg("Please enter a valid anime name.");
+      return;
+    }
+
+    setErrorMsg("");
+    setLoading(true);
+    setAnimeList([]);
     const data = await fetch(
       `https://api.jikan.moe/v4/anime?q=${search}&limit=20`
     );
@@ -96,25 +107,29 @@ export default function HomeClient({ welcomeSuffix }) {
         !anime.rating?.toLowerCase().includes("nudity")
     );
 
+    if (filteredAnime.length === 0) {
+      setErrorMsg("No anime found. Please enter a valid anime name.");
+    }
+
     setAnimeList(filteredAnime);
+    setLoading(false);
   }
 
   function showSearchResults() {
-    if (animeList) {
-      if (animeList.length > 0)
-        return <p className="pb-5 text-3xl font-bold">Search Results</p>;
-      else
-        return (
-          <p className="pb-10 text-xl font-bold">
-            No anime found. Please enter a valid anime name.
-          </p>
-        );
+    if (loading) {
+      return <p className="text-xl font-bold">Loading...</p>;
+    }
+    if (errorMsg) {
+      return <p className="text-xl font-bold text-red-600">{errorMsg}</p>;
+    }
+    if (animeList.length > 0) {
+      return <p className="pb-5 text-3xl font-bold">Search Results</p>;
     }
   }
 
   return (
     <main className="w-screen">
-      <h1 className="flex justify-center py-10 text-3xl font-bold">
+      <h1 className="flex justify-center pb-10 text-3xl font-bold">
         Welcome{welcomeSuffix}!👋
       </h1>
       <div className="flex justify-center w-full">

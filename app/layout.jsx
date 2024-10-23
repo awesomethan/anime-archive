@@ -48,15 +48,15 @@ function AppContent({ children }) {
         />
         <a
           className="text-4xl font-bold duration-300 hover:text-sky-300"
-          href="./"
-        >
-          Ethan's Anime Archive
-        </a>
-        <a
-          className="text-4xl font-bold duration-300 hover:text-sky-300"
           href="/myAnimeList"
         >
           My List
+        </a>
+        <a
+          className="text-4xl font-bold duration-300 hover:text-sky-300"
+          href="./"
+        >
+          Home
         </a>
         <a
           className="text-4xl font-bold duration-300 hover:text-sky-300"
@@ -64,15 +64,16 @@ function AppContent({ children }) {
         >
           About
         </a>
-        <div>
+        <div className="pt-1.5">
           <SignedOut>
             <SignInButton className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg" />
           </SignedOut>
           <SignedIn>
-            <UserButton showName />
+            <UserButton />
           </SignedIn>
         </div>
       </nav>
+      <div className="pt-20"></div>
       {children}
     </>
   );

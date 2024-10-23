@@ -23,7 +23,7 @@ export default function MyAnimeListClient({ userId }) {
   }, [userId]);
 
   return (
-    <div className="pt-20 flex flex-col items-start bg-black px-24">
+    <div className="pt-5 flex flex-col items-start bg-black px-24">
       <h1 className="text-4xl font-bold mb-6 text-white drop-shadow-lg tracking-wide">
         My Anime List
       </h1>
