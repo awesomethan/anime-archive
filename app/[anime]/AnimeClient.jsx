@@ -50,7 +50,7 @@ export default function AnimeClient({ anime, userId }) {
           </div>
         </div>
       </div>
-      <div className="flex w-3/5 flex-col justify-center h-full">
+      <div className="flex w-3/5 flex-col justify-center">
         {/* Right Section: Anime Details */}
         <div className="text-white">
           <p className="pr-32 text-justify pb-4">

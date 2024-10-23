@@ -1,3 +1,8 @@
+// loading.tsx
 export default function Loading() {
-  return <h1 className="text-2xl font-bold flex justify-center">Loading...</h1>;
+  return (
+    <div className="flex w-screen justify-center items-center h-88/100">
+      <p>Loading...</p>
+    </div>
+  );
 }

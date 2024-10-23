@@ -44,7 +44,7 @@ function AppContent({ children }) {
         <img
           src="logo.png"
           alt="logo cannot be displayed"
-          className="w-16 h-auto sm:w-20 md:w-24 lg:w-28 xl:w-32"
+          className="w-16 h-auto sm:w-20 md:w-24"
         />
         <a
           className="text-4xl font-bold duration-300 hover:text-sky-300"
