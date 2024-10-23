@@ -1,3 +1,7 @@
+export const metadata = {
+  title: "About",
+};
+
 export default function About() {
   return (
     <div className="pt-32 flex justify-around px-4 text-lg leading-8">

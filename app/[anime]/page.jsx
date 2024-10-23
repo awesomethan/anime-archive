@@ -1,6 +1,26 @@
 import { auth } from "@clerk/nextjs/server";
 import AnimeClient from "./AnimeClient";
 
+//fetch anime name for webpage title
+export async function generateMetadata({ params }) {
+  const { anime } = params;
+
+  // Fetch anime details
+  const response = await fetch(`https://api.jikan.moe/v4/anime/${anime}`);
+
+  if (!response.ok) {
+    return {
+      title: "Anime Details",
+    };
+  }
+
+  const res = await response.json();
+
+  return {
+    title: res.data?.title || "Anime Details",
+  };
+}
+
 export default async function AnimeDetails({ params }) {
   const { anime } = params;
 
