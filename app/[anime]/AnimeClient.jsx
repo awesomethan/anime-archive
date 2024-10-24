@@ -25,7 +25,7 @@ export default function AnimeClient({ anime, userId }) {
   }
 
   return (
-    <div className="flex w-screen pt-20">
+    <div className="flex w-screen pb-10 pt-3">
       {/* Left Section: Title and Image */}
       <div className="flex w-2/5 flex-col justify-center">
         <h1 className="pb-4 text-center text-2xl font-bold">
