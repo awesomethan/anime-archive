@@ -66,7 +66,7 @@ export default function MyAnimeListClient({ userId }) {
 
   return (
     <div className="pt-5 flex flex-col items-center bg-black">
-      <h1 className="text-4xl font-bold mb-6 text-white drop-shadow-lg tracking-wide">
+      <h1 className="text-4xl font-bold pb-8 text-white drop-shadow-lg tracking-wide">
         My Anime List
       </h1>
       <ul className="space-y-4 w-3/4">
