@@ -20,18 +20,19 @@ Check it out [here](https://ethans-anime-archive.vercel.app/) or follow the step
 2. **Install dependencies**  
    `npm install`
 
-3. **Set up environment variables**  
-   Create a `.env.local` file in the root directory and add the following variables:  
-   `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`  
-   `CLERK_SECRET_KEY`  
-   `NEXT_PUBLIC_CLERK_SIGN_IN_URL`  
-   `NEXT_PUBLIC_CLERK_SIGN_UP_URL`
+3. **Set up environment variables**
+Create a `.env.local` file in the root directory and add the following variables:
 
-4. **Configure the database**  
-   Add your Turso DB connection details to the environment variables:  
-   `TURSO_AUTH_TOKEN`  
-   `TURSO_DATABASE_URL`
+For Clerk configuration:
+- `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`
+- `CLERK_SECRET_KEY`
+- `NEXT_PUBLIC_CLERK_SIGN_IN_URL`
+- `NEXT_PUBLIC_CLERK_SIGN_UP_URL`
 
-6. **Run the development server**  
+For the database configuration:
+- `TURSO_AUTH_TOKEN`
+- `TURSO_DATABASE_URL`
+
+4. **Run the development server**  
    `npm run dev`  
    The app will be available at `http://localhost:3000`.
