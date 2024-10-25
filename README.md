@@ -23,13 +23,13 @@ Check it out [here](https://ethans-anime-archive.vercel.app/) or follow the step
 3. **Set up environment variables**
 Create a `.env.local` file in the root directory and add the following variables:
 
-For Clerk configuration:
+   For Clerk configuration:
 - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`
 - `CLERK_SECRET_KEY`
 - `NEXT_PUBLIC_CLERK_SIGN_IN_URL`
 - `NEXT_PUBLIC_CLERK_SIGN_UP_URL`
 
-For Turso DB configuration:
+   For Turso DB configuration:
 - `TURSO_AUTH_TOKEN`
 - `TURSO_DATABASE_URL`
 
