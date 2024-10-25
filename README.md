@@ -29,10 +29,11 @@ For Clerk configuration:
 - `NEXT_PUBLIC_CLERK_SIGN_IN_URL`
 - `NEXT_PUBLIC_CLERK_SIGN_UP_URL`
 
-For the database configuration:
+For Turso DB configuration:
 - `TURSO_AUTH_TOKEN`
 - `TURSO_DATABASE_URL`
 
 4. **Run the development server**  
-   `npm run dev`  
+   `npm run dev`
+   
    The app will be available at `http://localhost:3000`.
