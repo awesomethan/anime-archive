@@ -20,7 +20,7 @@ Check it out [here](https://ethans-anime-archive.vercel.app/) or follow the step
 2. **Install dependencies**  
    `npm install`
 
-3. **Set up environment variables**
+3. **Set up environment variables**  
 Create a `.env.local` file in the root directory and add the following variables:
 
    For Clerk configuration:
