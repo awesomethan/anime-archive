@@ -13,14 +13,6 @@ Anime Archive is a web application that allows users to browse, save, and manage
 
 Check it out [here](https://ethans-anime-archive.vercel.app/) or follow the steps below to run it locally.
 
-
-## Getting Started
-
-### Prerequisites
-- **Node.js** and **npm** installed on your machine.
-- Access to **Clerk** for authentication services.
-- Access to **Turso DB** for anime list database.
-
 ### Installation
 1. **Clone the repository**  
    `git clone https://github.com/awesomethan/anime-archive.git && cd anime-archive`
