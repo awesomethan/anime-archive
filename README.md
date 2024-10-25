@@ -1,18 +1,13 @@
 # Anime Archive
 Anime Archive is a web application that allows users to browse, save, and manage a personalized list of anime. Built with Next.js and Tailwind CSS, it offers a seamless user experience with dynamic content and user authentication.
 
-Features
-Browse Anime: Explore a wide range of anime titles with detailed information.
-User Authentication: Secure sign-in and sign-up functionality powered by Clerk.
-Personal Anime List: Add anime to your list and keep track of your favorites.
-Real-Time Data Fetching: The app fetches the latest anime data every time the page reloads.
-Database Integration: Utilizes Turso DB to store and manage anime entries.
-Technologies Used
-Next.js: React framework with server-side rendering capabilities.
-Tailwind CSS: Utility-first CSS framework for rapid UI development.
-Clerk: Authentication service for managing user accounts and sessions.
-Turso DB: Database solution for storing anime data.
-Vercel: Deployment platform for hosting the application.
+## Features
+Browse Anime: Explore a wide range of anime with detailed information
+User Authentication: Secure sign-in and sign-up functionality powered by Clerk
+Personal Anime List: Add anime to your list and keep track of your favorites
+Real-Time Data Fetching: The app fetches the latest anime data every time the page reloads
+Database Integration: Configured Prisma with PostgreSQL database for efficient data storage and seamless watchlist management
+**Technologies Used**: Next.js, Tailwind CSS, Clerk, Turso DB, Vercel
 Getting Started
 Prerequisites
 Node.js and npm installed on your machine.
