@@ -11,7 +11,8 @@ Anime Archive is a web application that allows users to browse, save, and manage
 
 **Technologies Used**: Next.js, Tailwind CSS, Clerk, Turso DB, Vercel
 
-Check it out at [https://ethans-anime-archive.vercel.app/](https://ethans-anime-archive.vercel.app/) or follow the steps below to run it locally.
+Check it out [here](https://ethans-anime-archive.vercel.app/) or follow the steps below to run it locally.
+
 
 ## Getting Started
 
