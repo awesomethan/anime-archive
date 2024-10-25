@@ -30,14 +30,16 @@ Database Integration: Configured Prisma with PostgreSQL database for efficient d
 
 3. **Set up environment variables**  
    Create a `.env.local` file in the root directory and add the following variables:  
-   `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key`  
-   `CLERK_SECRET_KEY=your_clerk_secret_key`  
-   `NEXT_PUBLIC_CLERK_SIGN_IN_URL=your_clerk_sign_in_url`  
-   `NEXT_PUBLIC_CLERK_SIGN_UP_URL=your_clerk_sign_up_url`
+   `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`  
+   `CLERK_SECRET_KEY`  
+   `NEXT_PUBLIC_CLERK_SIGN_IN_URL`  
+   `NEXT_PUBLIC_CLERK_SIGN_UP_URL`
 
 4. **Configure the database**  
-   Set up your Turso DB and add the connection details to your environment variables if necessary.
+   Add your Turso DB connection details to the environment variables:
+   `TURSO_AUTH_TOKEN`  
+   `TURSO_DATABASE_URL`
 
-5. **Run the development server**  
+6. **Run the development server**  
    `npm run dev`  
    The app will be available at `http://localhost:3000`.
