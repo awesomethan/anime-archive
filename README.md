@@ -1,4 +1,4 @@
-**Anime Archive**
+#Anime Archive
 Anime Archive is a web application that allows users to browse, save, and manage a personalized list of anime. Built with Next.js and Tailwind CSS, it offers a seamless user experience with dynamic content and user authentication.
 
 Features
