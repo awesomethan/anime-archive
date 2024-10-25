@@ -16,7 +16,7 @@ Anime Archive is a web application that allows users to browse, save, and manage
 ### Prerequisites
 - **Node.js** and **npm** installed on your machine.
 - Access to **Clerk** for authentication services.
-- **Turso DB** account for database setup.
+- Access to **Turso DB** for anime list database.
 
 ### Installation
 1. **Clone the repository**  
