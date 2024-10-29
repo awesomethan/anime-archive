@@ -8,6 +8,7 @@ export default function AnimeAPI({ anime, userId }) {
   const [isRemoving, setIsRemoving] = useState(false);
   const [removeSuccess, setRemoveSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [isInList, setIsInList] = useState(false);
 
   const handleAddToList = async () => {
     setIsAdding(true);
@@ -89,7 +90,7 @@ export default function AnimeAPI({ anime, userId }) {
         </button>
       </div>
       {/* Single message for success or error */}
-      <div className="mt-4">
+      <div className="mt-4 h-6">
         {(addSuccess || removeSuccess) && (
           <p className="text-green-500">
             {addSuccess
