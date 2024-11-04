@@ -13,7 +13,7 @@ Anime Archive is a web application that allows users to browse, save, and manage
 
 Check it out [here](https://ethans-anime-archive.vercel.app/) or follow the steps below to run it locally.
 
-### Installation
+## Installation
 1. **Clone the repository**  
    `git clone https://github.com/awesomethan/anime-archive.git && cd anime-archive`
 
@@ -21,7 +21,7 @@ Check it out [here](https://ethans-anime-archive.vercel.app/) or follow the step
    `npm install`
 
 3. **Set up environment variables**  
-Create a `.env.local` file in the root directory and add the following variables:
+Create a `.env` file in the root directory and add the following variables:
 
    For Clerk configuration:
 - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`
@@ -45,16 +45,16 @@ You can also run Anime Archive in a Docker container.
 ### 1. Build and Run with Docker Compose
 
 - Ensure Docker is installed and running on your machine.
-- Use Docker Compose to build and start the app:
-
-   `docker-compose up --build`  
+- Use Docker Compose to build and start the app:  
+   `docker-compose up --build`
+  
   This will build the Docker image and start the application. By default, the app will be available at http://localhost:3000.
 
-  ### 2. Setting Up Environment Variables
+### 2. Setting Up Environment Variables
   
   Docker Compose will automatically load environment variables from a .env file if it exists. Make sure you have the necessary variables in a .env file (as detailed in the "Set up environment variables" section above).
 
-  ### 3. Stopping the Docker Containers
+### 3. Stopping the Docker Containers
 
   To stop the app and remove the containers, networks, and volumes created by Docker Compose, run:
 
