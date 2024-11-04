@@ -16,9 +16,9 @@ Check it out [here](https://ethans-anime-archive.vercel.app/) or follow the step
 ## Prerequisites
 Make sure you have the following installed on your machine:
 
-- **Node.js** (v14 or higher): [Download Node.js](https://nodejs.org/)
+- **Node.js** (v14 or higher)
 - **npm** (comes with Node.js)
-- **Docker**: [Download Docker](https://www.docker.com/get-started)
+- **Docker**
 
 ## Installation
 1. **Clone the repository**  
