@@ -13,6 +13,13 @@ Anime Archive is a web application that allows users to browse, save, and manage
 
 Check it out [here](https://ethans-anime-archive.vercel.app/) or follow the steps below to run it locally.
 
+## Prerequisites
+Make sure you have the following installed on your machine:
+
+- **Node.js** (v14 or higher): [Download Node.js](https://nodejs.org/)
+- **npm** (comes with Node.js)
+- **Docker**: [Download Docker](https://www.docker.com/get-started)
+
 ## Installation
 1. **Clone the repository**  
    `git clone https://github.com/awesomethan/anime-archive.git && cd anime-archive`
