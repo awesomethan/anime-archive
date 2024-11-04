@@ -37,3 +37,26 @@ Create a `.env.local` file in the root directory and add the following variables
    `npm run dev`
    
    The app will be available at `http://localhost:3000`
+
+## Running with Docker
+
+You can also run Anime Archive in a Docker container.
+
+### 1. Build and Run with Docker Compose
+
+- Ensure Docker is installed and running on your machine.
+- Use Docker Compose to build and start the app:
+
+   `docker-compose up --build`  
+  This will build the Docker image and start the application. By default, the app will be available at http://localhost:3000.
+
+  ### 2. Setting Up Environment Variables
+  
+  Docker Compose will automatically load environment variables from a .env file if it exists. Make sure you have the necessary variables in a .env file (as detailed in the "Set up environment variables" section above).
+
+  ### 3. Stopping the Docker Containers
+
+  To stop the app and remove the containers, networks, and volumes created by Docker Compose, run:
+
+  `docker-compose down`
+
