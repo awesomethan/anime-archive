@@ -96,7 +96,7 @@ export default function MyAnimeListClient({ userId }) {
   }
 
   return (
-    <div className="pt-5 flex flex-col items-center bg-black">
+    <div className="pt-5 pb-10 flex flex-col items-center bg-black">
       <div className="flex items-center justify-between w-3/4 pb-8">
         <h1 className="text-4xl font-bold text-white drop-shadow-lg tracking-wide text-right">
           My Anime List
@@ -132,24 +132,32 @@ export default function MyAnimeListClient({ userId }) {
 
       <ul className="space-y-4 w-3/4">
         {myAnimeList.map((anime) => (
-          <div key={anime.id} className="">
+          <div key={anime.id}>
             <Link href={`/${anime.id}`}>
-              <div className="p-4 bg-gray-800 text-white rounded-lg hover:bg-gray-700 hover:scale-105 hover:shadow-lg transition-all duration-300 w-full shadow-md border border-gray-600">
+              <div className="p-4 bg-gray-800 text-white rounded-lg hover:bg-gray-700 hover:scale-105 hover:shadow-lg transition-all duration-300 w-full shadow-md border border-gray-600 overflow-hidden">
                 {/* Main Title and Info Container */}
                 <div className="flex justify-between items-center space-x-6">
-                  <h2 className="text-lg font-semibold">{anime.title}</h2>
+                  <h2 className="text-lg font-semibold flex-shrink-0">
+                    {anime.title}
+                  </h2>
                   {/* Additional Anime Info */}
                   <div className="w-3/4 flex justify-end space-x-6 text-sm text-gray-400">
-                    <p>
+                    <p className="truncate w-1/3 text-right">
                       {anime.genres?.map((genre) => genre.name).join(", ") ||
                         "Unknown Genre"}
                     </p>
-                    <p>{anime.episodes || "?"} Episodes</p>
-                    <p>Score: {anime.score || "N/A"}</p>
-                    <div className="w-1/4 bg-gray-700 rounded-full h-2">
+                    <p className="w-1/6 text-right">
+                      {anime.episodes || "?"} Episodes
+                    </p>
+                    <p className="w-1/6 text-right">
+                      Score: {anime.score || "N/A"}
+                    </p>
+                    <div className="w-1/4 bg-gray-700 rounded-full h-2 overflow-hidden">
                       <div
                         className="bg-green-500 h-2 rounded-full"
-                        style={{ width: `${(anime.score / 10) * 100}%` }}
+                        style={{
+                          width: `${Math.min((anime.score / 10) * 100, 100)}%`,
+                        }}
                       ></div>
                     </div>
                   </div>

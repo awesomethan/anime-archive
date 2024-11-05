@@ -156,7 +156,7 @@ export default function HomeClient({ welcomeSuffix }) {
 
       <div className="p-10">
         {showSearchResults()}
-        <div className="grid grid-cols-5 gap-16 pb-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-16 pb-10">
           {animeList?.map((anime) => (
             <Anime
               key={anime.mal_id}
@@ -168,7 +168,7 @@ export default function HomeClient({ welcomeSuffix }) {
         </div>
 
         <p className="pb-5 text-3xl font-bold">Recommended Anime</p>
-        <div className="grid grid-cols-5 gap-16">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-16">
           {recommendedAnime.map((anime) => (
             <Anime
               key={anime.id}

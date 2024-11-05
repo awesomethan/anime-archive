@@ -4,31 +4,37 @@ export const metadata = {
 
 export default function About() {
   return (
-    <div className="pt-32 flex justify-around px-4 text-lg leading-8">
+    <div className="pt-12 xl:pt-20 pb-10 flex justify-around px-4 text-lg leading-8">
       <div className="w-1/2">
         <p className="py-5">
-          Hey! Welcome to my anime site! Here's how you can use it:
+          Welcome to Anime Archive! This platform is designed to help you
+          explore, save, and manage your favorite anime.
         </p>
         <ul>
           <li>
-            You can search for any anime and click on the image to learn more
-            about it! The name, genre(s), number of episodes, and many other
-            attributes of the anime are listed.
+            Use the search bar to find any anime by name. Click on the anime
+            image to view detailed information, including genres, episodes, and
+            ratings.
           </li>
           <li>
-            If you click 'Search!' without any prompt, a collection of random
-            anime will pop up.
+            By creating an account, you can add anime to your personal list and
+            keep track of your favorites. Access your list at any time and
+            easily manage your saved shows.
           </li>
           <li>
-            For inspiration, you can check out the 'Recommended Anime' section.
+            For inspiration, check out the 'Recommended Anime' section for
+            curated picks and popular titles.
           </li>
         </ul>
-        <p className="py-5">Have fun learning more about anime!</p>
+        <p className="py-5">
+          Hope you enjoy discovering new anime and managing your personalized
+          collection!
+        </p>
       </div>
       <img
         src="/chisato.gif"
         className="w-1/4 object-contain"
-        alt="gif cannot be displayed"
+        alt="Anime character animation"
       />
     </div>
   );
